@@ -1,0 +1,8 @@
+.select {
+  background-color: darkslategray;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+}

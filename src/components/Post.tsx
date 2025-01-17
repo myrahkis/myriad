@@ -5,9 +5,10 @@ import EditForm from "./EditForm";
 
 function Post({ post, onDelete, onEdit }) {
   const [showModal, setShowModal] = useState(false);
-  const { id, title, body, userId, likes, dislikes, tags } = post;
+  const { id, title, body, userId, tags, reactions } = post;
+  const { likes, dislikes } = reactions;
 
-//   console.log(post);
+  //   console.log(post);
 
   function handleDelete() {
     if (!id) return;
@@ -18,7 +19,7 @@ function Post({ post, onDelete, onEdit }) {
   return (
     <>
       {showModal && (
-        <BgBlurModal>
+        <BgBlurModal onClose={setShowModal}>
           <EditForm post={post} onEdit={onEdit} onClose={setShowModal} />
         </BgBlurModal>
       )}
@@ -27,6 +28,8 @@ function Post({ post, onDelete, onEdit }) {
           {id}. {title}
         </h3>
         <p>{body}</p>
+        <span>likes: {likes}</span>
+        <span>dislikes: {dislikes}</span>
         <button onClick={handleDelete}>Delete</button>
         <button onClick={() => setShowModal(true)}>Edit</button>
       </li>
