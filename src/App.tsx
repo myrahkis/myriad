@@ -4,16 +4,6 @@ import Loader from "./components/Loader";
 import Post from "./components/Post";
 import styles from "./ui/main.module.css";
 
-type Post = {
-  body: string;
-  id: number;
-  reactions: object;
-  tags: string[];
-  title: string;
-  userId: number;
-  views: number;
-};
-
 const MAX_PAGES = 21;
 
 function App() {
@@ -25,7 +15,7 @@ function App() {
   const isFetching = useRef(false);
 
   /*
-  todo: редактирование, удаление, добавление? 
+  todo: редактирование, добавление? 
   */
 
   useEffect(() => {
@@ -87,8 +77,12 @@ function App() {
     };
   }, []);
 
-  function deletePostHandle(id) {
+  function deletePostHandle(id: number) {
     setPosts(posts.filter((post) => post.id !== id));
+  }
+
+  function editPostHandle(id: number, editedPost: object) {
+    setPosts(posts.map((post) => (post.id === id ? editedPost : post)));
   }
 
   return (
@@ -97,7 +91,7 @@ function App() {
       <div className="container">
         <ul className={styles["posts-grid"]}>
           {posts.map((post) => (
-            <Post post={post} key={post.id} onDelete={deletePostHandle} />
+            <Post post={post} key={post.id} onDelete={deletePostHandle} onEdit={editPostHandle} />
           ))}
         </ul>
         <div ref={observerRef}></div>
