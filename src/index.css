@@ -17,6 +17,7 @@ body {
   display: flex;
   min-height: 100vh;
   background-color: darkslategrey;
+  color: whitesmoke;
 }
 
 button {
@@ -33,3 +34,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 6rem;
+}

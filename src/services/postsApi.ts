@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const url = "https://dummyjson.com/posts";
-const limitPerPage = 10;
+const limitPerPage = 12;
 
 type Post = {
   body: string;

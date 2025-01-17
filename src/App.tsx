@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { getPostsByPage } from "./services/postsApi";
 import Loader from "./components/Loader";
+import Post from "./components/Post";
+import styles from "./ui/main.module.css";
 
 type Post = {
   body: string;
@@ -12,7 +14,7 @@ type Post = {
   views: number;
 };
 
-const MAX_PAGES = 25;
+const MAX_PAGES = 21;
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -85,15 +87,17 @@ function App() {
     };
   }, []);
 
+  function deletePostHandle(id) {
+    setPosts(posts.filter((post) => post.id !== id));
+  }
+
   return (
     <>
       {isLoading && <Loader />}
-      <div>
-        <ul>
+      <div className="container">
+        <ul className={styles["posts-grid"]}>
           {posts.map((post) => (
-            <li key={post.id} style={{ padding: "1.5rem" }}>
-              {post.id}. {post.title}
-            </li>
+            <Post post={post} key={post.id} onDelete={deletePostHandle} />
           ))}
         </ul>
         <div ref={observerRef}></div>
