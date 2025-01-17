@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  padding: 1.5rem;
+  width: 35%;
+  max-width: 35%;
+  border-radius: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  color: black;
+}
+
+.close-btn {
+  align-self: flex-end;
+}
+
+.input {
+  font-family: inherit;
+  padding: 1rem;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 1.5rem;
+}

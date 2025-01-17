@@ -15,7 +15,7 @@ function App() {
   const isFetching = useRef(false);
 
   /*
-  todo: редактирование, добавление? 
+  todo: добавление? сортировка!! + доделать карточки постов
   */
 
   useEffect(() => {
@@ -91,7 +91,12 @@ function App() {
       <div className="container">
         <ul className={styles["posts-grid"]}>
           {posts.map((post) => (
-            <Post post={post} key={post.id} onDelete={deletePostHandle} onEdit={editPostHandle} />
+            <Post
+              post={post}
+              key={post.id}
+              onDelete={deletePostHandle}
+              onEdit={editPostHandle}
+            />
           ))}
         </ul>
         <div ref={observerRef}></div>
