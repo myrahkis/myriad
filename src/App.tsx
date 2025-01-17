@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { getAllPosts } from "./services/postsApi";
+import { getPostsByPage } from "./services/postsApi";
+import Loader from "./components/Loader";
 
 type Post = {
   body: string;
@@ -21,6 +22,10 @@ function App() {
   const observerRef = useRef<HTMLDivElement>(null);
   const isFetching = useRef(false);
 
+  /*
+  todo: редактирование, удаление, добавление? 
+  */
+
   useEffect(() => {
     async function fetchPosts() {
       if (isFetching.current || page > MAX_PAGES) return;
@@ -29,14 +34,14 @@ function App() {
         setIsLoading(true);
         isFetching.current = true;
 
-        const newPosts = await getAllPosts(page);
+        const newPosts = await getPostsByPage(page);
 
         // console.log(page);
         setPosts((prevPosts) => [...prevPosts, ...newPosts]);
         setError("");
       } catch (err) {
         if (err instanceof Error) {
-          console.error(err.message);
+          // console.error(err.message);
           setError(err.message);
         } else {
           setError("Произошла неизвестная ошибка");
@@ -81,16 +86,19 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id} style={{ padding: "1.5rem" }}>
-            {post.id}. {post.title}
-          </li>
-        ))}
-      </ul>
-      <div ref={observerRef}></div>
-    </div>
+    <>
+      {isLoading && <Loader />}
+      <div>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id} style={{ padding: "1.5rem" }}>
+              {post.id}. {post.title}
+            </li>
+          ))}
+        </ul>
+        <div ref={observerRef}></div>
+      </div>
+    </>
   );
 }
 

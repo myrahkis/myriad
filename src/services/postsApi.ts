@@ -13,7 +13,7 @@ type Post = {
   views: number;
 };
 
-export async function getAllPosts(page: number): Promise<Post[]> {
+export async function getPostsByPage(page: number): Promise<Post[]> {
   const res = await axios.get(
     `${url}?limit=${limitPerPage}&skip=${page * limitPerPage}`
   );
