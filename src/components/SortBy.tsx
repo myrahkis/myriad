@@ -3,7 +3,7 @@ import styles from "../ui/sort.module.css";
 function SortBy({ order, setOrder }) {
   return (
     <>
-      <label>Sort by:</label>
+      <label className={styles['sort-label']}>Sort by:</label>
       <select
         name="sort"
         value={order}

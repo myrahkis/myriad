@@ -43,7 +43,7 @@ function App() {
   const isFetching = useRef(false);
 
   /*
-  todo: добавление? + доделать карточки постов
+  todo: поиск по userId? + доделать карточки постов
   */
 
   useEffect(() => {

@@ -19,7 +19,7 @@ export async function getPostsByPage(page: number): Promise<Post[]> {
 
   if (res.statusText !== "OK") throw new Error("Couldn't fetch all posts");
 
-  console.log(res.data.posts);
+  // console.log(res.data.posts);
 
   return res.data.posts;
 }

@@ -1,8 +1,12 @@
 .select {
-  background-color: darkslategray;
-  color: white;
+  background-color: var(--bg-color);
+  color: var(--emphasis-color);
   border: none;
   border-radius: 2rem;
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
+}
+
+.sort-label {
+  color: var(--bg-color);
 }

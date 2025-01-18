@@ -1,5 +1,10 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --main-color: #630033;
+  --bg-color: #bda5ac;
+  --emphasis-color: #003d3c;
+  --light-emphasis-color: #d4e7df;
 }
 
 * {
@@ -13,14 +18,14 @@ html {
   font-size: 65%;
 
   scrollbar-width: thin;
-  scrollbar-color: darkslategrey pink;
+  scrollbar-color: var(--bg-color) var(--emphasis-color);
 }
 
 body {
   display: flex;
   min-height: 100vh;
-  background-color: darkslategrey;
-  color: whitesmoke;
+  background-color: var(--bg-color);
+  color: var(--emphasis-color);
   padding-bottom: 3rem;
 }
 
@@ -29,9 +34,6 @@ button {
   font-family: inherit;
   padding: 0.6rem 1.2rem;
   border: none;
-}
-button:hover {
-  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
@@ -55,8 +57,8 @@ button:focus-visible {
   bottom: 0;
   z-index: 2;
   width: 100%;
-  background-color: pink;
+  background-color: var(--emphasis-color);
   color: black;
-  padding:1rem;
+  padding: 1rem;
   font-size: 2rem;
 }

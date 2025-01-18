@@ -1,6 +1,72 @@
 .post {
+  display: grid;
+  grid-template-rows: 0.2fr auto 0.1fr 0.2fr;
+  row-gap: 1rem;
   padding: 2rem;
-  border: 2px solid red;
+  border: 2px solid var(--emphasis-color);
   font-size: 1.5rem;
   overflow-wrap: anywhere;
+  border-radius: 2.5rem;
+}
+
+.tags {
+  display: flex;
+  gap: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-start;
+}
+
+.reactions-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-btn {
+  background-color: var(--emphasis-color);
+  color: var(--bg-color);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 0.6rem 1.5rem;
+}
+
+.reaction-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+
+  svg {
+    color: var(--main-color);
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &:hover {
+    border: 2px solid var(--main-color);
+    background-color: var(--main-color);
+    color: var(--bg-color);
+
+    svg {
+      color: var(--bg-color);
+    }
+  }
+}
+
+.delete-btn {
+  &:hover {
+    background-color: var(--main-color);
+  }
 }
