@@ -24,7 +24,7 @@ const sortingFunctions: SortFunctions = {
 const MAX_PAGES = 21;
 
 function App() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostStructure[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
@@ -42,7 +42,7 @@ function App() {
 
         const newPosts = await getPostsByPage(page);
 
-        setPosts((prevPosts) => [...prevPosts, ...newPosts] as Post[]);
+        setPosts((prevPosts) => [...prevPosts, ...newPosts] as PostStructure[]);
         setError("");
       } catch (err) {
         if (err instanceof Error) {
@@ -95,7 +95,9 @@ function App() {
 
   function editPostHandle(id: number, editedPost: object) {
     setPosts(
-      posts.map((post) => (post.id === id ? editedPost : post)) as Post[]
+      posts.map((post) =>
+        post.id === id ? editedPost : post
+      ) as PostStructure[]
     );
   }
 
