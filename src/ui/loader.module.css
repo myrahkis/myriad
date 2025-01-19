@@ -17,8 +17,8 @@
   z-index: 1000;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1.3rem solid pink;
-  border-left-color: greenyellow;
+  border: 1.3rem solid var(--main-color);
+  border-left-color: var(--emphsis-color);
   animation: loader 3s infinite;
 }
 

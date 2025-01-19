@@ -45,7 +45,7 @@ function Post({ post, onDelete, onEdit, onUpdateReaction }: PostInterface) {
           ))}
         </div>
         <div className={styles["buttons"]}>
-          <div className={styles["reactions-wrapper"]}>
+          <div className={styles["btns-wrapper"]}>
             <button
               className={styles["reaction-btn"]}
               onClick={() => handleReactionUpdate("likes")}
@@ -91,7 +91,7 @@ function Post({ post, onDelete, onEdit, onUpdateReaction }: PostInterface) {
               {dislikes}
             </button>
           </div>
-          <div className={styles["actions-wrapper"]}>
+          <div className={styles["btns-wrapper"]}>
             <button
               className={styles["action-btn"]}
               onClick={() => setShowModal(true)}

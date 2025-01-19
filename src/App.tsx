@@ -132,6 +132,9 @@ function App() {
     <>
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
+      <header className={styles['header']}>
+        <h1>Test task for VK</h1>
+      </header>
       <main className="container">
         <ul className={styles["posts-grid"]}>
           {displayPosts.map((post) => (

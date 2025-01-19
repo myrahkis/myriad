@@ -66,6 +66,7 @@ button:active {
   justify-content: center;
   align-items: center;
   padding: 5rem 6rem;
+  padding-top: 10rem;
 }
 
 .footer {
@@ -81,4 +82,21 @@ button:active {
   color: black;
   padding: 1rem;
   font-size: 2rem;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .container {
+    padding: 4rem 5rem;
+  }
+}
+@media only screen and (max-width: 431px) {
+  .container {
+    padding: 3rem 4rem;
+  }
+}
+@media only screen and (max-width: 392px) {
+  .container {
+    padding: 2rem 3rem;
+  }
 }

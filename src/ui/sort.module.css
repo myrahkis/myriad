@@ -10,3 +10,12 @@
 .sort-label {
   color: var(--bg-color);
 }
+
+@media only screen and (max-width: 431px) {
+  .select {
+    font-size: 1.4rem;
+  }
+  .sort-label {
+    font-size: 1.6rem;
+  }
+}

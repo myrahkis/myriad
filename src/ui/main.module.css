@@ -1,7 +1,32 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--emphasis-color);
+  color: var(--bg-color);
+  padding: 2rem 0;
+  box-shadow: 0 0.6rem 1rem var(--shadow-color);
+}
+
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 2rem;
   row-gap: 2rem;
   list-style: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .posts-grid {
+    display: flex;
+    flex-direction: column;
+  }
 }
