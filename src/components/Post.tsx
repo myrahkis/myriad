@@ -3,13 +3,11 @@ import styles from "../ui/post.module.css";
 import BgBlurModal from "./BgBlurModal";
 import EditForm from "./EditForm";
 
-function Post({ post, onDelete, onEdit }) {
+function Post({ post, onDelete, onEdit, onUpdateReaction }) {
   const { id, title, body, userId, tags, reactions } = post;
   const { likes, dislikes } = reactions;
 
   const [showModal, setShowModal] = useState(false);
-  const [postLikes, setPostLikes] = useState(likes);
-  const [postDislikes, setPostDislikes] = useState(dislikes);
 
   //   console.log(post);
 
@@ -17,6 +15,10 @@ function Post({ post, onDelete, onEdit }) {
     if (!id) return;
 
     onDelete(id);
+  }
+
+  function handleReactionUpdate(reactionName) {
+    onUpdateReaction(id, reactionName);
   }
 
   return (
@@ -31,7 +33,7 @@ function Post({ post, onDelete, onEdit }) {
           {id}. {title}
         </h3>
         <p>{body}</p>
-        <div className={styles['tags']}>
+        <div className={styles["tags"]}>
           {tags.map((tag) => (
             <p key={tag}>#{tag}</p>
           ))}
@@ -40,7 +42,7 @@ function Post({ post, onDelete, onEdit }) {
           <div className={styles["reactions-wrapper"]}>
             <button
               className={styles["reaction-btn"]}
-              onClick={() => setPostLikes((like) => like + 1)}
+              onClick={() => handleReactionUpdate("likes")}
             >
               <span>
                 <svg
@@ -50,8 +52,8 @@ function Post({ post, onDelete, onEdit }) {
                   viewBox="0 0 486.926 486.926"
                   width="2.5rem"
                   height="2.5rem"
-                  xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                  xml:space="preserve"
+                  xmlnsxml="http://www.w3.org/XML/1998/namespace"
+                  xmlSpace="preserve"
                   version="1.1"
                 >
                   <g>
@@ -59,11 +61,11 @@ function Post({ post, onDelete, onEdit }) {
                   </g>
                 </svg>
               </span>
-              {postLikes}
+              {likes}
             </button>
             <button
               className={styles["reaction-btn"]}
-              onClick={() => setPostDislikes((like) => like + 1)}
+              onClick={() => handleReactionUpdate("dislikes")}
             >
               <span>
                 <svg
@@ -73,8 +75,8 @@ function Post({ post, onDelete, onEdit }) {
                   viewBox="0 0 486.805 486.805"
                   width="2.5rem"
                   height="2.5rem"
-                  xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                  xml:space="preserve"
+                  xmlnsxml="http://www.w3.org/XML/1998/namespace"
+                  xmlSpace="preserve"
                   version="1.1"
                 >
                   <g>
@@ -82,7 +84,7 @@ function Post({ post, onDelete, onEdit }) {
                   </g>
                 </svg>
               </span>
-              {postDislikes}
+              {dislikes}
             </button>
           </div>
           <div className={styles["actions-wrapper"]}>

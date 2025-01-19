@@ -113,6 +113,22 @@ function App() {
     );
   }
 
+  function updateReaction(id: number, reactionName: "likes" | "dislikes") {
+    setPosts(
+      posts.map((post) =>
+        post.id === id
+          ? {
+              ...post,
+              reactions: {
+                ...post.reactions,
+                [reactionName]: post.reactions[reactionName] + 1,
+              },
+            }
+          : post
+      ) as Post[]
+    );
+  }
+
   const sortedPosts = useCallback(
     (order: keyof SortFunctions) => {
       const postsCopy = [...posts];
@@ -127,6 +143,7 @@ function App() {
   return (
     <>
       {isLoading && <Loader />}
+      {error && <p>{error}</p>}
       <main className="container">
         <ul className={styles["posts-grid"]}>
           {displayPosts.map((post) => (
@@ -135,6 +152,7 @@ function App() {
               key={post.id}
               onDelete={deletePostHandle}
               onEdit={editPostHandle}
+              onUpdateReaction={updateReaction}
             />
           ))}
         </ul>

@@ -7,6 +7,8 @@
   font-size: 1.5rem;
   overflow-wrap: anywhere;
   border-radius: 2.5rem;
+  background-color: var(--card-bg-color);
+  box-shadow: 0.2rem 0.3rem 0.5rem var(--emphasis-color);
 }
 
 .tags {

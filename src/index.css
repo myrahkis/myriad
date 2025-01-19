@@ -2,9 +2,10 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --main-color: #630033;
-  --bg-color: #bda5ac;
+  --bg-color:#C3CBBD;
   --emphasis-color: #003d3c;
   --light-emphasis-color: #d4e7df;
+  --card-bg-color: #CBCBBD;
 }
 
 * {
@@ -27,6 +28,11 @@ body {
   background-color: var(--bg-color);
   color: var(--emphasis-color);
   padding-bottom: 3rem;
+}
+
+::selection {
+  color: var(--bg-color);
+  background: var(--emphasis-color);
 }
 
 button {
