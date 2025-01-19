@@ -1,8 +1,11 @@
 import { createPortal } from "react-dom";
 import styles from "../ui/bgBlurModal.module.css";
 import { useEffect } from "react";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 function BgBlurModal({ children, onClose }) {
+  const modalRef = useOutsideClick<HTMLDivElement>(() => onClose(false));
+
   // отключение взаимодействия с фоном
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -13,8 +16,10 @@ function BgBlurModal({ children, onClose }) {
   }, []);
 
   return createPortal(
-    <div className={styles["modal-bg"]} onClick={onClose}>
-      {children}
+    <div className={styles["modal-bg"]}>
+      <div className={styles["content"]} ref={modalRef}>
+        {children}
+      </div>
     </div>,
     document.body
   );

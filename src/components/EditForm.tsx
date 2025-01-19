@@ -7,7 +7,6 @@ function EditForm({ post, onEdit, onClose }) {
 
   const [editTitle, setEditTitle] = useState(title);
   const [editBody, setEditBody] = useState(body);
-  const formRef = useOutsideClick<HTMLFormElement>(() => onClose(false));
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,13 +18,14 @@ function EditForm({ post, onEdit, onClose }) {
     };
 
     onEdit(id, newPost);
+    onClose(false);
   }
   return (
     <div className={styles["wrapper"]}>
       <button className={styles["close-btn"]} onClick={() => onClose(false)}>
-        Close
+        &#x2716;
       </button>
-      <form onSubmit={handleSubmit} ref={formRef} className={styles["form"]}>
+      <form onSubmit={handleSubmit} className={styles["form"]}>
         <div className={styles["col"]}>
           <label className={styles["label"]}>Change post's title</label>
           <input
@@ -46,7 +46,9 @@ function EditForm({ post, onEdit, onClose }) {
             onChange={(e) => setEditBody(e.target.value)}
           />
         </div>
-        <button type="submit">Edit</button>
+        <button type="submit" className={styles["edit-btn"]}>
+          Edit
+        </button>
       </form>
     </div>
   );

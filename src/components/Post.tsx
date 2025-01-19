@@ -98,7 +98,17 @@ function Post({ post, onDelete, onEdit, onUpdateReaction }) {
               className={`${styles["action-btn"]} ${styles["delete-btn"]}`}
               onClick={handleDelete}
             >
-              Delete
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  width="2rem"
+                  height="2rem"
+                >
+                  <path d="M 5.755 20.283 L 4 8 H 20 L 18.245 20.283 A 2 2 0 0 1 16.265 22 H 7.735 A 2 2 0 0 1 5.755 20.283 Z M 21 4 H 16 V 3 a 1 1 0 0 0 -1 -1 H 9 A 1 1 0 0 0 8 3 V 4 H 3 A 1 1 0 0 0 3 6 H 21 a 1 1 0 0 0 0 -2 Z" />
+                </svg>
+              </span>
             </button>
           </div>
         </div>

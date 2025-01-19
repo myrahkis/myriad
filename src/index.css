@@ -2,10 +2,12 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --main-color: #630033;
-  --bg-color:#C3CBBD;
+  --bg-color: #c3cbbd;
   --emphasis-color: #003d3c;
   --light-emphasis-color: #d4e7df;
-  --card-bg-color: #CBCBBD;
+  --card-bg-color: #cbcbbd;
+  --shadow-color: #627c7b;
+  --dark-shadow-color: #00120f;
 }
 
 * {
@@ -35,15 +37,27 @@ body {
   background: var(--emphasis-color);
 }
 
+textarea {
+  resize: vertical;
+}
+
 button {
   cursor: pointer;
   font-family: inherit;
   padding: 0.6rem 1.2rem;
   border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 0.3rem 0.4rem var(--shadow-color);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 0.6rem var(--shadow-color);
+}
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 0.3rem 0.3rem var(--shadow-color);
 }
 
 .container {
