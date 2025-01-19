@@ -1,13 +1,25 @@
+import { Dispatch, SetStateAction } from "react";
 import styles from "../ui/sort.module.css";
 
-function SortBy({ order, setOrder }) {
+interface SortByInterface {
+  order: string;
+  setOrder: Dispatch<
+    SetStateAction<"id" | "title" | "body" | "likes" | "dislikes">
+  >;
+}
+
+function SortBy({ order, setOrder }: SortByInterface) {
   return (
     <>
-      <label className={styles['sort-label']}>Sort by:</label>
+      <label className={styles["sort-label"]}>Sort by:</label>
       <select
         name="sort"
         value={order}
-        onChange={(e) => setOrder(e.target.value)}
+        onChange={(e) =>
+          setOrder(
+            e.target.value as "id" | "title" | "body" | "likes" | "dislikes"
+          )
+        }
         className={styles["select"]}
       >
         <option value="id">Default</option>

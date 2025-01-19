@@ -1,25 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getPostsByPage } from "./services/postsApi";
+import { PostStructure } from "./interfaces/interfaces";
 import Loader from "./components/Loader";
 import Post from "./components/Post";
 import styles from "./ui/main.module.css";
 import SortBy from "./components/SortBy";
 
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  reactions: {
-    likes: number;
-    dislikes: number;
-  };
-  done: boolean;
-}
-
 type SortFunctions = {
   [key in "id" | "title" | "body" | "likes" | "dislikes"]: (
-    a: Post,
-    b: Post
+    a: PostStructure,
+    b: PostStructure
   ) => number;
 };
 
@@ -41,10 +31,6 @@ function App() {
   const [order, setOrder] = useState<keyof SortFunctions>("id");
   const observerRef = useRef<HTMLDivElement>(null);
   const isFetching = useRef(false);
-
-  /*
-  todo: поиск по userId? + доделать карточки постов
-  */
 
   useEffect(() => {
     async function fetchPosts() {
@@ -125,7 +111,7 @@ function App() {
               },
             }
           : post
-      ) as Post[]
+      ) as PostStructure[]
     );
   }
 

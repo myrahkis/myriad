@@ -1,9 +1,14 @@
 import { createPortal } from "react-dom";
+import { Dispatch, ReactNode, SetStateAction, useEffect } from "react";
 import styles from "../ui/bgBlurModal.module.css";
-import { useEffect } from "react";
 import useOutsideClick from "../hooks/useOutsideClick";
 
-function BgBlurModal({ children, onClose }) {
+interface BgBlurModalProps {
+  children: ReactNode;
+  onClose: Dispatch<SetStateAction<boolean>>;
+}
+
+function BgBlurModal({ children, onClose }: BgBlurModalProps) {
   const modalRef = useOutsideClick<HTMLDivElement>(() => onClose(false));
 
   // отключение взаимодействия с фоном

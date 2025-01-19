@@ -5,12 +5,12 @@ function useOutsideClick<T extends HTMLElement>(
   handler: () => void,
   listenCapturing = true
 ): React.RefObject<T> {
-  const ref = useRef<T | null>();
+  const ref = useRef<T | null>(null);
 
   useEffect(
     function () {
-      function handleClick(e) {
-        if (ref.current && !ref.current.contains(e.target)) {
+      function handleClick(e: MouseEvent) {
+        if (ref.current && !ref.current.contains(e.target as Node)) {
           handler();
         }
       }

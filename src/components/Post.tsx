@@ -1,15 +1,21 @@
 import { useState } from "react";
+import { PostStructure } from "../interfaces/interfaces";
 import styles from "../ui/post.module.css";
 import BgBlurModal from "./BgBlurModal";
 import EditForm from "./EditForm";
 
-function Post({ post, onDelete, onEdit, onUpdateReaction }) {
-  const { id, title, body, userId, tags, reactions } = post;
+interface PostInterface {
+  post: PostStructure;
+  onDelete: (id: number) => void;
+  onEdit: (id: number, editedPost: object) => void;
+  onUpdateReaction: (id: number, reactionName: "likes" | "dislikes") => void;
+}
+
+function Post({ post, onDelete, onEdit, onUpdateReaction }: PostInterface) {
+  const { id, title, body, tags, reactions } = post;
   const { likes, dislikes } = reactions;
 
   const [showModal, setShowModal] = useState(false);
-
-  //   console.log(post);
 
   function handleDelete() {
     if (!id) return;
@@ -17,7 +23,7 @@ function Post({ post, onDelete, onEdit, onUpdateReaction }) {
     onDelete(id);
   }
 
-  function handleReactionUpdate(reactionName) {
+  function handleReactionUpdate(reactionName: "likes" | "dislikes") {
     onUpdateReaction(id, reactionName);
   }
 
@@ -52,7 +58,6 @@ function Post({ post, onDelete, onEdit, onUpdateReaction }) {
                   viewBox="0 0 486.926 486.926"
                   width="2.5rem"
                   height="2.5rem"
-                  xmlnsxml="http://www.w3.org/XML/1998/namespace"
                   xmlSpace="preserve"
                   version="1.1"
                 >
@@ -75,7 +80,6 @@ function Post({ post, onDelete, onEdit, onUpdateReaction }) {
                   viewBox="0 0 486.805 486.805"
                   width="2.5rem"
                   height="2.5rem"
-                  xmlnsxml="http://www.w3.org/XML/1998/namespace"
                   xmlSpace="preserve"
                   version="1.1"
                 >
