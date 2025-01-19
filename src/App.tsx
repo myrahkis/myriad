@@ -5,6 +5,7 @@ import Loader from "./components/Loader";
 import Post from "./components/Post";
 import styles from "./ui/main.module.css";
 import SortBy from "./components/SortBy";
+import useObserve from "./hooks/useObserve";
 
 type SortFunctions = {
   [key in "id" | "title" | "body" | "likes" | "dislikes"]: (
@@ -27,10 +28,9 @@ function App() {
   const [posts, setPosts] = useState<PostStructure[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(0);
   const [order, setOrder] = useState<keyof SortFunctions>("id");
-  const observerRef = useRef<HTMLDivElement>(null);
   const isFetching = useRef(false);
+  const { page, observerRef } = useObserve(isFetching);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -58,36 +58,6 @@ function App() {
 
     fetchPosts();
   }, [page]);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 1.0,
-    };
-
-    const callback = (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries;
-
-      if (entry.isIntersecting && !isFetching.current) {
-        setPage((prevPage) => prevPage + 1);
-      }
-    };
-
-    const observer = new IntersectionObserver(callback, options);
-
-    const ref = observerRef.current;
-
-    if (ref) {
-      observer.observe(ref);
-    }
-
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-      }
-    };
-  }, []);
 
   function deletePostHandle(id: number) {
     setPosts(posts.filter((post) => post.id !== id));
@@ -132,7 +102,7 @@ function App() {
     <>
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
-      <header className={styles['header']}>
+      <header className={styles["header"]}>
         <h1>Test task for VK</h1>
       </header>
       <main className="container">
